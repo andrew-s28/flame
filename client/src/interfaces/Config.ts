@@ -4,6 +4,7 @@ export interface Config {
   WEATHER_API_KEY: string;
   lat: number;
   long: number;
+  zip: string;
   isCelsius: boolean;
   customTitle: string;
   pinAppsByDefault: boolean;

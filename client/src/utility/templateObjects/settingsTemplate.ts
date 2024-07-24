@@ -26,6 +26,7 @@ export const weatherSettingsTemplate: WeatherForm = {
   WEATHER_API_KEY: '',
   lat: 0,
   long: 0,
+  zip: '',
   isCelsius: true,
   weatherData: 'cloud',
 };

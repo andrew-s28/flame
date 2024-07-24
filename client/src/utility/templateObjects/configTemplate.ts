@@ -4,6 +4,7 @@ export const configTemplate: Config = {
   WEATHER_API_KEY: '',
   lat: 0,
   long: 0,
+  zip: '',
   isCelsius: true,
   customTitle: 'Flame',
   pinAppsByDefault: true,

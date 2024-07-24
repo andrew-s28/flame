@@ -3,13 +3,20 @@ const axios = require('axios');
 const loadConfig = require('./loadConfig');
 
 const getExternalWeather = async () => {
-  const { WEATHER_API_KEY: secret, lat, long } = await loadConfig();
+  const { WEATHER_API_KEY: secret, lat, long, zip } = await loadConfig();
 
   // Fetch data from external API
   try {
-    const res = await axios.get(
-      `http://api.weatherapi.com/v1/current.json?key=${secret}&q=${lat},${long}`
-    );
+    let res;
+    if (zip) {
+      res = await axios.get(
+        `http://api.weatherapi.com/v1/current.json?key=${secret}&q=${zip}`
+      );
+    } else {
+      res = await axios.get(
+        `http://api.weatherapi.com/v1/current.json?key=${secret}&q=${lat},${long}`
+      );
+    } 
 
     // Save weather data
     const cursor = res.data.current;

@@ -49,6 +49,21 @@ export const WeatherSettings = (): JSX.Element => {
       });
     }
 
+    if (!formData.lat && !formData.long && !formData.zip) {
+      createNotification({
+        title: 'Warning',
+        message: 'Location is missing. Weather Module will NOT work',
+      });
+    }
+
+    if (formData.lat && formData.long && formData.zip) {
+      createNotification({
+        title: 'Warning',
+        message: 'Multiple locations set. Using coordinates',
+      });
+      formData.zip = '';
+    }
+
     // Save settings
     await updateConfig(formData);
 
@@ -150,6 +165,18 @@ export const WeatherSettings = (): JSX.Element => {
           onChange={(e) => inputChangeHandler(e, { isNumber: true })}
           step="any"
           lang="en-150"
+        />
+      </InputGroup>
+
+      <InputGroup>
+        <label htmlFor="zip">Zip Code</label>
+        <input
+          type="text"
+          id="zip"
+          name="zip"
+          placeholder="12345"
+          value={formData.zip}
+          onChange={(e) => inputChangeHandler(e, { isNumber: true })}
         />
       </InputGroup>
 
