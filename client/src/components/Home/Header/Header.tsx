@@ -38,7 +38,7 @@ export const Header = (): JSX.Element => {
     <header className={classes.Header}>
       {(!hideDate || showTime) && <p>{dateTime}</p>}
 
-      <Link to="/settings" className={classes.SettingsLink}>
+      <Link to="/settings/theme" className={classes.SettingsLink}>
         Go to Settings
       </Link>
 
