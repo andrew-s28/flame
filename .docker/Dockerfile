@@ -1,22 +1,22 @@
-FROM node:16 as builder
+FROM node:lts-alpine as builder
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --production
+RUN npm install --omit=dev
 
 COPY . .
 
 RUN mkdir -p ./public ./data \
     && cd ./client \
-    && npm install --production \
+    && npm install --omit=dev \
     && npm run build \
     && cd .. \
     && mv ./client/build/* ./public \
     && rm -rf ./client
 
-FROM node:16-alpine
+FROM node:lts-alpine
 
 COPY --from=builder /app /app
 
