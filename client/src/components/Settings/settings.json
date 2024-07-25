@@ -2,7 +2,7 @@
   "routes": [
     {
       "name": "Theme",
-      "dest": "/settings",
+      "dest": "/settings/theme",
       "authRequired": false
     },
     {

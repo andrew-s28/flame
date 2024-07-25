@@ -18,8 +18,7 @@
   transition: all 0.3s;
 }
 
-.SettingsNavLink:hover,
-.SettingsNavLink:focus {
+.SettingsNavLink:hover {
   border-left: 3px solid var(--color-primary);
 }
 
